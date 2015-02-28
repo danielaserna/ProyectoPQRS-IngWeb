@@ -2,12 +2,15 @@ package co.edu.udea.iw.PQRS.dto;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase dto para los datos de las solicitudes
  * 
  * @author Daniela Serna Buitrago
  * @author Yefry Alexis Calderon Yepes
  */
+@XmlRootElement()
 public class Solicitude implements Serializable {
 
 	private static final long serialVersionUID = -7442993749471623615L;

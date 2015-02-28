@@ -2,6 +2,8 @@ package co.edu.udea.iw.PQRS.dto;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase dto para los datos del cliente
  * 
@@ -9,6 +11,7 @@ import java.io.Serializable;
  * @author Yefry Alexis Calderon Yepes
  * 
  */
+@XmlRootElement()
 public class Client implements Serializable {
 
 	private static final long serialVersionUID = 4098723666223954696L;

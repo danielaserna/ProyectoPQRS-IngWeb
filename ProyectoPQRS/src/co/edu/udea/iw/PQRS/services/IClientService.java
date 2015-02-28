@@ -38,4 +38,5 @@ public interface IClientService {
 	 */
 	public Client findUserByLogin(String idNumber) throws IWDaoException,
 			IWServiceException;
+	
 }
