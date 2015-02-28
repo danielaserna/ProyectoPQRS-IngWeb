@@ -72,6 +72,10 @@ public class ClientService implements IClientService {
 		}
 
 		client = clientDAO.get(Integer.parseInt(idNumber));
+		
+		if(client == null){
+			throw new IWServiceException("Usuario o contraseña no validos");
+		}
 
 		return client;
 	}

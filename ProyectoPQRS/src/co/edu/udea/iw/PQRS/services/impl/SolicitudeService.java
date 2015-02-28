@@ -3,6 +3,7 @@ package co.edu.udea.iw.PQRS.services.impl;
 import java.util.List;
 
 import co.edu.udea.iw.PQRS.dao.SolicitudeDAO;
+import co.edu.udea.iw.PQRS.dao.SolicitudeTypeDAO;
 import co.edu.udea.iw.PQRS.dto.Client;
 import co.edu.udea.iw.PQRS.dto.Product;
 import co.edu.udea.iw.PQRS.dto.Solicitude;
@@ -15,6 +16,7 @@ import co.edu.udea.iw.PQRS.services.ISolicitudeService;
 public class SolicitudeService implements ISolicitudeService {
 
 	private SolicitudeDAO solicitudeDAOHibernate;
+	private SolicitudeTypeDAO solicitudeTypeDAOHibernate;
 
 	public SolicitudeDAO getSolicitudeDAOHibernate() {
 		return solicitudeDAOHibernate;
@@ -24,9 +26,18 @@ public class SolicitudeService implements ISolicitudeService {
 		this.solicitudeDAOHibernate = solicitudeDAOHibernate;
 	}
 
-	public void insertSolicitude(String description, 
-			String solicitudeType, String idSucursal, String idNumber,
-			String idProduct) throws IWDaoException, IWServiceException {
+	public SolicitudeTypeDAO getSolicitudeTypeDAOHibernate() {
+		return solicitudeTypeDAOHibernate;
+	}
+
+	public void setSolicitudeTypeDAOHibernate(
+			SolicitudeTypeDAO solicitudeTypeDAOHibernate) {
+		this.solicitudeTypeDAOHibernate = solicitudeTypeDAOHibernate;
+	}
+
+	public void insertSolicitude(String description, String solicitudeType,
+			String idSucursal, String idNumber, String idProduct)
+			throws IWDaoException, IWServiceException {
 
 		Solicitude solicitude = new Solicitude();
 
@@ -57,7 +68,7 @@ public class SolicitudeService implements ISolicitudeService {
 		SolicitudeType typeSolicitude = new SolicitudeType();
 		typeSolicitude.setIdSolicitudType(solicitudeType);
 		solicitude.setSolicitudeType(typeSolicitude);
-		
+
 		Sucursal sucursal = new Sucursal();
 		sucursal.setIdSucursal(Integer.parseInt(idSucursal));
 
@@ -70,10 +81,50 @@ public class SolicitudeService implements ISolicitudeService {
 	public List<Solicitude> getAll() throws IWDaoException, IWServiceException {
 
 		List<Solicitude> solicitudeList = null;
-		
+
 		solicitudeList = solicitudeDAOHibernate.get();
-		
+
 		return solicitudeList;
+	}
+
+	public void deleteSolicitude(String idSolicitude) throws IWDaoException,
+			IWServiceException {
+
+		if (idSolicitude == null && "".equals(idSolicitude)) {
+			throw new IWServiceException(
+					"La identificación de la solicitud no puede ser nula");
+		}
+
+		Solicitude solicitude = solicitudeDAOHibernate.get(Integer
+				.parseInt(idSolicitude));
+
+		if (solicitude == null) {
+			throw new IWServiceException("La solicitud con id : "
+					+ idSolicitude
+					+ "ha eliminar no existe en la base de datos");
+		}
+		solicitude = solicitudeDAOHibernate.delete(solicitude);
+
+		if (solicitude != null) {
+			throw new IWServiceException(
+					"La solicitud no se pudo eliminar satisfactoriamente");
+		}
+	}
+
+	public List<SolicitudeType> getAllSolicitudeType() throws IWDaoException,
+			IWServiceException {
+
+		List<SolicitudeType> solicitudeTypeList;
+
+		solicitudeTypeList = solicitudeTypeDAOHibernate.get();
+
+		if (solicitudeTypeList == null) {
+			throw new IWServiceException(
+					"Error al consultar todos los tipo de solicitud en la base de datos");
+		}
+
+		return solicitudeTypeList;
+
 	}
 
 }

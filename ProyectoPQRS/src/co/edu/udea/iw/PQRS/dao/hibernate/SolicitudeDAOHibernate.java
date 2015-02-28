@@ -104,7 +104,7 @@ public class SolicitudeDAOHibernate extends HibernateDaoSupport implements
 			Session session = getSession();
 
 			Criteria criteria = session.createCriteria(Solicitude.class).add(
-					Restrictions.eq("idSolicitud", idSolicitude));
+					Restrictions.eq("idSolicitude", idSolicitude));
 
 			solicitude = (Solicitude) criteria.uniqueResult();
 

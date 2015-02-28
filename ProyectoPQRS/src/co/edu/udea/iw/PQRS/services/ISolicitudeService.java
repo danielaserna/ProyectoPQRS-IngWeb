@@ -3,6 +3,7 @@ package co.edu.udea.iw.PQRS.services;
 import java.util.List;
 
 import co.edu.udea.iw.PQRS.dto.Solicitude;
+import co.edu.udea.iw.PQRS.dto.SolicitudeType;
 import co.edu.udea.iw.PQRS.exception.IWDaoException;
 import co.edu.udea.iw.PQRS.exception.IWServiceException;
 
@@ -30,4 +31,18 @@ public interface ISolicitudeService {
 	 * @throws IWServiceException
 	 */
 	public List<Solicitude> getAll() throws IWDaoException, IWServiceException;
+
+	/**
+	 * 
+	 * @param idSolicitude
+	 */
+	public void deleteSolicitude(String idSolicitude) throws IWDaoException,
+			IWServiceException;
+
+	/**
+	 * 
+	 * @return
+	 */
+	public List<SolicitudeType> getAllSolicitudeType() throws IWDaoException,
+			IWServiceException;
 }

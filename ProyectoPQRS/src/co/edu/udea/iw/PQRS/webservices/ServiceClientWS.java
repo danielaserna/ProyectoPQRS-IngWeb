@@ -3,6 +3,7 @@ package co.edu.udea.iw.PQRS.webservices;
 import java.rmi.RemoteException;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -25,20 +26,42 @@ public class ServiceClientWS {
 
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
+	@Path("login")
 	public Client getClient(@QueryParam("idNumber") String idNumber)
 			throws RemoteException, IWServiceException {
 
 		Client client = new Client();
 		try {
-
 			client = clientService.findUserByLogin(idNumber);
-
 		} catch (IWDaoException e) {
 			throw new RemoteException(e.getMessage());
 		}
-
 		return client;
+	}
 
+	@Path("insert")
+	@Produces(MediaType.TEXT_PLAIN)
+	@POST
+	public String insertClient(@QueryParam("fullName") String fullName,
+			@QueryParam("lastName") String lastName,
+			@QueryParam("cellPhoneNumber") String cellPhoneNumber,
+			@QueryParam("email") String email,
+			@QueryParam("idNumber") Integer idNumber,
+			@QueryParam("phoneNumber") String phoneNumber,
+			@QueryParam("profile") String profile) throws RemoteException,
+			IWServiceException {
+
+
+		try {
+			clientService.saveClient(fullName, lastName, cellPhoneNumber,
+					email, idNumber, phoneNumber, profile);
+		} catch (IWDaoException e) {
+			return e.getMessage();
+		}catch (IWServiceException e) {
+			return e.getMessage();
+		}
+
+		return "";
 	}
 
 }
