@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/02/2015 08:07:20 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="co.edu.udea.iw.PQRS.dto.Client" table="CLIENT">
+		<id name="idNumber" type="java.lang.Integer">
+			<column name="ID_NUMBER" precision="15" />
+			<generator class="assigned" />
+		</id>
+		<property name="fullName" type="java.lang.String">
+			<column name="FULL_NAME" not-null="true" length="60" />
+		</property>
+		<property name="lastName" type="java.lang.String">
+			<column name="LAST_NAME" not-null="true" length="60" />
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="EMAIL" not-null="true" length="120" />
+		</property>
+		<property name="phoneNumber" type="java.lang.String">
+			<column name="PHONE_NUMBER" not-null="true" length="45" />
+		</property>
+		<property name="cellphoneNumber" type="java.lang.String">
+			<column name="CELLPHONE_NUMBER" not-null="false" length="45" />
+		</property>
+		<many-to-one name="profile" class="co.edu.udea.iw.PQRS.dto.Profile"
+			fetch="join">
+			<column name="PROFILE_PROFILE" not-null="true" length="45" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

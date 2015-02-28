@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/02/2015 08:03:15 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="co.edu.udea.iw.PQRS.dto.Product" table="PRODUCT">
+		<id name="idProduct" type="java.lang.Integer">
+			<column name="ID_PRODUCT" precision="12" />
+			<generator class="assigned" />
+		</id>
+		<property name="description" type="java.lang.String">
+			<column name="DESCRIPTION" not-null="false" length="45" />
+		</property>
+		<many-to-one name="type" class="co.edu.udea.iw.PQRS.dto.ProductType"
+			fetch="join">
+			<column name="PRODUCT_TYPE_TYPE" not-null="true" length="30" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

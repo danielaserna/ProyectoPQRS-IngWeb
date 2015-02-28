@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/02/2015 08:03:15 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="co.edu.udea.iw.PQRS.dto.Solicitude" table="SOLICITUDE">
+		<id name="idSolicitude" type="java.lang.Integer">
+			<column name="ID_SOLICITUDE" precision="12" />
+			<generator class="assigned" />
+		</id>
+		<property name="description" type="java.lang.String">
+			<column name="DESCRIPTION" not-null="true" length="200" />
+		</property>
+		<many-to-one name="solicitudeType" class="co.edu.udea.iw.PQRS.dto.SolicitudeType"
+			fetch="join">
+			<column name="SOLICITUDE_TYPE_ID_SOLICITUDE_TYPE" not-null="true"
+				length="30" />
+		</many-to-one>
+		<many-to-one name="idProduct" class="co.edu.udea.iw.PQRS.dto.Product"
+			fetch="join">
+			<column name="PRODUCT_ID_PRODUCT" not-null="true" precision="12" />
+		</many-to-one>
+		<many-to-one name="idSucursal" class="co.edu.udea.iw.PQRS.dto.Sucursal"
+			fetch="join">
+			<column name="SUCURSAL_ID_SUCURSAL" not-null="true" precision="12" />
+		</many-to-one>
+		<many-to-one name="idNumber" class="co.edu.udea.iw.PQRS.dto.Client"
+			fetch="join">
+			<column name="CLIENT_ID_NUMBER" not-null="true" precision="15" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>
