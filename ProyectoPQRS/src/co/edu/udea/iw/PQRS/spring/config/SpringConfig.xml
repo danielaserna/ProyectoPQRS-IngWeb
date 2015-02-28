@@ -95,6 +95,7 @@
 
 	<bean id="productService" class="co.edu.udea.iw.PQRS.services.impl.ProductService">
 		<property name="productTypeDAO" ref="productTypeDAO" />
+		<property name="productDAOHibernate" ref="productDAO"></property>
 	</bean>
 
 	<context:component-scan base-package="co.edu.udea.iw.PQRS.webservices" />

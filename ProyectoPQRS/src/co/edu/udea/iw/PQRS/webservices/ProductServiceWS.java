@@ -12,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import co.edu.udea.iw.PQRS.dto.Product;
 import co.edu.udea.iw.PQRS.dto.ProductType;
 import co.edu.udea.iw.PQRS.exception.IWDaoException;
 import co.edu.udea.iw.PQRS.exception.IWServiceException;
@@ -32,7 +33,7 @@ public class ProductServiceWS {
 		this.productService = productService;
 	}
 
-	@Path("all")
+	@Path("allProducType")
 	@Produces(MediaType.APPLICATION_JSON)
 	@GET
 	public List<ProductType> getAllProductType() throws IWDaoException,
@@ -47,5 +48,24 @@ public class ProductServiceWS {
 		}
 
 		return productTypeList;
+	}
+
+	@Path("allProducts")
+	@Produces(MediaType.APPLICATION_JSON)
+	@GET
+	public List<Product> getAllProducts() throws IWDaoException,
+			IWServiceException, RemoteException {
+		
+		List<Product> productList = new ArrayList<Product>();
+		
+		try {
+			
+			productList = productService.getAllProducts();
+			
+		} catch (IWDaoException e) {
+			throw new RemoteException(e.getMessage());
+		}
+		
+		return productList;
 	}
 }
