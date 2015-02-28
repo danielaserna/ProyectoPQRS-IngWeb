@@ -2,6 +2,8 @@ package co.edu.udea.iw.PQRS.dto;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase dto para los datos de las sucursales
  * 
@@ -9,6 +11,7 @@ import java.io.Serializable;
  * @author Yefry Alexis Calderon Yepes
  * 
  */
+@XmlRootElement()
 public class Sucursal implements Serializable {
 
 	private static final long serialVersionUID = 3126750689288922532L;

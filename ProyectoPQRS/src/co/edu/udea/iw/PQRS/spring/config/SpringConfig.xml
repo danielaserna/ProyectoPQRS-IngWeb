@@ -98,6 +98,10 @@
 		<property name="productDAOHibernate" ref="productDAO"></property>
 	</bean>
 
+	<bean id="sucursalService" class="co.edu.udea.iw.PQRS.services.impl.SucursalService">
+		<property name="sucursalDAOHibernate" ref="sucursalDAO" />
+	</bean>
+
 	<context:component-scan base-package="co.edu.udea.iw.PQRS.webservices" />
 
 </beans>

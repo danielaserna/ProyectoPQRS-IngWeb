@@ -83,6 +83,10 @@ public class SolicitudeService implements ISolicitudeService {
 		List<Solicitude> solicitudeList = null;
 
 		solicitudeList = solicitudeDAOHibernate.get();
+		
+		if (solicitudeList == null || solicitudeList.size() == 0) {
+			throw new IWServiceException("No existen solicitudes en la base datos");
+		}
 
 		return solicitudeList;
 	}
