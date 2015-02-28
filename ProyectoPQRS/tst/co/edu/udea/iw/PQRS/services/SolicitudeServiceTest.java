@@ -26,7 +26,7 @@ public class SolicitudeServiceTest {
 	public void testInsertSolicitude() throws IWDaoException,
 			IWServiceException {
 
-		solicitudeService.insertSolicitude("Producto Malo", "1", "1", "123456",
+		solicitudeService.insertSolicitude("Malo Producto", "1", "1", "123456",
 				"333");
 
 	}

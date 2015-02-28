@@ -7,6 +7,7 @@ import java.util.List;
 import javax.activation.MimeType;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -37,6 +38,29 @@ public class SolicitudeServiceWS {
 
 	public void setSolicitudeService(SolicitudeService solicitudeService) {
 		this.solicitudeService = solicitudeService;
+	}
+
+	@Path("insert")
+	@Produces(MediaType.APPLICATION_JSON)
+	@POST
+	public String insertSolicitude(
+			@QueryParam("description") String description,
+			@QueryParam("solicitudeType") String solicitudeType,
+			@QueryParam("idSucursal") String idSucursal,
+			@QueryParam("idNumber") String idNumber,
+			@QueryParam("idProduct") String idProduct) throws IWDaoException,
+			IWServiceException, RemoteException {
+
+		try {
+			this.getSolicitudeService().insertSolicitude(description,
+					solicitudeType, idSucursal, idNumber, idProduct);
+		} catch (IWDaoException e) {
+			return e.getMessage();
+		}catch (IWServiceException e) {
+			return e.getMessage();
+		}
+		
+		return "";
 	}
 
 	@GET
