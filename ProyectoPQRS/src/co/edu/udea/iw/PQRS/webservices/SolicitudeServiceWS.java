@@ -58,7 +58,7 @@ public class SolicitudeServiceWS {
 
 	@Path("delete")
 	@PUT
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String deleteSolicitude(
 			@QueryParam("idSolicitude") String idSolicitude)
 			throws IWDaoException, IWServiceException {
@@ -73,12 +73,12 @@ public class SolicitudeServiceWS {
 	}
 
 	@GET
-	@Path("getAllTypeSolicitude")
+	@Path("getSolicitudeType")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<SolicitudeType> getAllSolicitudeType() throws IWDaoException,
 			IWServiceException, RemoteException {
 
-		List<SolicitudeType> solicitudeTypeList = new ArrayList<SolicitudeType>();
+		List<SolicitudeType> solicitudeTypeList = null;
 
 		try {
 			solicitudeTypeList = solicitudeService.getAllSolicitudeType();

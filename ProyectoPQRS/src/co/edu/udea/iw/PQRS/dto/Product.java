@@ -2,6 +2,8 @@ package co.edu.udea.iw.PQRS.dto;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * Clase dto para los datos de los productos
  * 
@@ -9,6 +11,7 @@ import java.io.Serializable;
  * @author Yefry Alexis Calderon Yepes
  * 
  */
+@XmlRootElement()
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = -4718639870074495466L;

@@ -27,7 +27,7 @@ public interface IClientService {
 	 *            aplica&oacute;n
 	 */
 	public void saveClient(String fullname, String lastName,
-			String cellphoneNumber, String email, Integer idNumber,
+			String cellphoneNumber, String email, String idNumber,
 			String phoneNumber, String profile) throws IWDaoException,
 			IWServiceException;
 

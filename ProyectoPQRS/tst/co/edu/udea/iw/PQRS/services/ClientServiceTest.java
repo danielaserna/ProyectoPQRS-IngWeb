@@ -25,10 +25,10 @@ public class ClientServiceTest {
 	private ClientService clientService;
 	private static Logger logger = Logger.getLogger(ClientDAOHibernate.class);
 
+	@Test
 	public void testSaveClient() throws IWDaoException, IWServiceException {
-		Integer idnumber = new Integer(123456);
-		clientService.saveClient("Yefry", "Calderon", "3143423",
-				"alexis@gmail.com", idnumber, "2341221", "cliente");
+		clientService.saveClient("Alex", "YEpes", "3143423",
+				"alexis@gmail.com", "4321", "2341221", "cliente");
 	}
 
 	@Test

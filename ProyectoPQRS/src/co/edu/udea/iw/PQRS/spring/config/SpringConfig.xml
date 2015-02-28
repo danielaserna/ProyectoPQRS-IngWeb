@@ -90,9 +90,13 @@
 
 	<bean id="solicitudeService" class="co.edu.udea.iw.PQRS.services.impl.SolicitudeService">
 		<property name="solicitudeDAOHibernate" ref="solicitudeDAO" />
-		<property name="solicitudeTypeDAOHibernate" ref="solicitudeTypeDAO"/>
+		<property name="solicitudeTypeDAOHibernate" ref="solicitudeTypeDAO" />
 	</bean>
 
-	<context:component-scan base-package="co.edu.udea.iw.PQRS.webservices"/>
+	<bean id="productService" class="co.edu.udea.iw.PQRS.services.impl.ProductService">
+		<property name="productTypeDAO" ref="productTypeDAO" />
+	</bean>
+
+	<context:component-scan base-package="co.edu.udea.iw.PQRS.webservices" />
 
 </beans>

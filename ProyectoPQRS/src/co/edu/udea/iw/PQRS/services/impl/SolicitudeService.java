@@ -41,16 +41,16 @@ public class SolicitudeService implements ISolicitudeService {
 
 		Solicitude solicitude = new Solicitude();
 
-		if (description == null && "".equals(description)) {
+		if (description == null || "".equals(description)) {
 			throw new IWServiceException(
 					"La descripción de la solicitud no puede ser nula o vacia");
 		}
 
-		if (solicitudeType == null && "".equals(solicitudeType)) {
+		if (solicitudeType == null || "".equals(solicitudeType)) {
 			throw new IWServiceException(
 					"Debe elegir un tipo de solicitud, no puede ser nulo o vacio");
 		}
-		if (idSucursal == null && "".equals(idSucursal)) {
+		if (idSucursal == null || "".equals(idSucursal)) {
 			throw new IWServiceException(
 					"La identificacion de la sucursal no puede ser vacia o nula");
 		}
@@ -87,10 +87,11 @@ public class SolicitudeService implements ISolicitudeService {
 		return solicitudeList;
 	}
 
+	@Override
 	public void deleteSolicitude(String idSolicitude) throws IWDaoException,
 			IWServiceException {
 
-		if (idSolicitude == null && "".equals(idSolicitude)) {
+		if (idSolicitude == null || "".equals(idSolicitude)) {
 			throw new IWServiceException(
 					"La identificación de la solicitud no puede ser nula");
 		}
@@ -111,6 +112,7 @@ public class SolicitudeService implements ISolicitudeService {
 		}
 	}
 
+	@Override
 	public List<SolicitudeType> getAllSolicitudeType() throws IWDaoException,
 			IWServiceException {
 

@@ -40,24 +40,23 @@ public class ServiceClientWS {
 	}
 
 	@Path("insert")
-	@Produces(MediaType.TEXT_PLAIN)
 	@POST
+	@Produces(MediaType.APPLICATION_JSON)
 	public String insertClient(@QueryParam("fullName") String fullName,
 			@QueryParam("lastName") String lastName,
 			@QueryParam("cellPhoneNumber") String cellPhoneNumber,
 			@QueryParam("email") String email,
-			@QueryParam("idNumber") Integer idNumber,
+			@QueryParam("idNumber") String idNumber,
 			@QueryParam("phoneNumber") String phoneNumber,
 			@QueryParam("profile") String profile) throws RemoteException,
 			IWServiceException {
-
 
 		try {
 			clientService.saveClient(fullName, lastName, cellPhoneNumber,
 					email, idNumber, phoneNumber, profile);
 		} catch (IWDaoException e) {
 			return e.getMessage();
-		}catch (IWServiceException e) {
+		} catch (IWServiceException e) {
 			return e.getMessage();
 		}
 
