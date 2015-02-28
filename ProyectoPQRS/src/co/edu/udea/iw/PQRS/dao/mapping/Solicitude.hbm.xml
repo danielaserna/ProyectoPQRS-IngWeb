@@ -6,7 +6,7 @@
 	<class name="co.edu.udea.iw.PQRS.dto.Solicitude" table="SOLICITUDE">
 		<id name="idSolicitude" type="java.lang.Integer">
 			<column name="ID_SOLICITUDE" precision="12" />
-			<generator class="assigned" />
+			<generator class="increment" />
 		</id>
 		<property name="description" type="java.lang.String">
 			<column name="DESCRIPTION" not-null="true" length="200" />

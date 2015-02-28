@@ -19,9 +19,9 @@ public interface ISolicitudeService {
 	 * @throws IWDaoException
 	 * @throws IWServiceException
 	 */
-	public void insertSolicitude(String description, String idSolicitude,
-			String solicitudeType, String idSucursal, String idNumber,
-			String idProduct) throws IWDaoException, IWServiceException;
+	public void insertSolicitude(String description, String solicitudeType,
+			String idSucursal, String idNumber, String idProduct)
+			throws IWDaoException, IWServiceException;
 
 	/**
 	 * 

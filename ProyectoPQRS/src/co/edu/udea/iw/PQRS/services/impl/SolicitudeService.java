@@ -24,7 +24,7 @@ public class SolicitudeService implements ISolicitudeService {
 		this.solicitudeDAOHibernate = solicitudeDAOHibernate;
 	}
 
-	public void insertSolicitude(String description, String idSolicitude,
+	public void insertSolicitude(String description, 
 			String solicitudeType, String idSucursal, String idNumber,
 			String idProduct) throws IWDaoException, IWServiceException {
 
@@ -34,10 +34,7 @@ public class SolicitudeService implements ISolicitudeService {
 			throw new IWServiceException(
 					"La descripción de la solicitud no puede ser nula o vacia");
 		}
-		if (idSolicitude == null && "".equals(idSolicitude)) {
-			throw new IWServiceException(
-					"La identificación de la solicitud no puede se vacia o nula");
-		}
+
 		if (solicitudeType == null && "".equals(solicitudeType)) {
 			throw new IWServiceException(
 					"Debe elegir un tipo de solicitud, no puede ser nulo o vacio");
@@ -56,11 +53,11 @@ public class SolicitudeService implements ISolicitudeService {
 		product.setIdProduct(Integer.parseInt(idProduct));
 		solicitude.setIdNumber(client);
 		solicitude.setIdProduct(product);
-		solicitude.setIdSolicitude(Integer.parseInt(idSolicitude));
 
 		SolicitudeType typeSolicitude = new SolicitudeType();
 		typeSolicitude.setIdSolicitudType(solicitudeType);
-
+		solicitude.setSolicitudeType(typeSolicitude);
+		
 		Sucursal sucursal = new Sucursal();
 		sucursal.setIdSucursal(Integer.parseInt(idSucursal));
 
@@ -72,7 +69,11 @@ public class SolicitudeService implements ISolicitudeService {
 	@Override
 	public List<Solicitude> getAll() throws IWDaoException, IWServiceException {
 
-		return null;
+		List<Solicitude> solicitudeList = null;
+		
+		solicitudeList = solicitudeDAOHibernate.get();
+		
+		return solicitudeList;
 	}
 
 }
