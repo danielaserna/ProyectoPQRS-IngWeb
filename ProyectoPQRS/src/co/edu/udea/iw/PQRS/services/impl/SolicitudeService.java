@@ -4,8 +4,6 @@ import java.util.List;
 
 import co.edu.udea.iw.PQRS.dao.SolicitudeDAO;
 import co.edu.udea.iw.PQRS.dao.SolicitudeTypeDAO;
-import co.edu.udea.iw.PQRS.dao.hibernate.SolicitudeDAOHibernate;
-import co.edu.udea.iw.PQRS.dao.hibernate.SolicitudeTypeDAOHibernate;
 import co.edu.udea.iw.PQRS.dto.Client;
 import co.edu.udea.iw.PQRS.dto.Product;
 import co.edu.udea.iw.PQRS.dto.Solicitude;
@@ -229,7 +227,16 @@ public class SolicitudeService implements ISolicitudeService {
 		}
 
 		return solicitudeTypeList;
+	}
 
+	@Override
+	public Solicitude get(Integer idSolicitude) throws IWDaoException,
+			IWServiceException {
+		Solicitude solicitude = null;
+
+		solicitude = solicitudeDAOHibernate.get(idSolicitude);
+
+		return (solicitude);
 	}
 
 }

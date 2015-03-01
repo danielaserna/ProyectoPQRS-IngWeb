@@ -63,7 +63,7 @@ public class SolicitudeDAOHibernate extends HibernateDaoSupport implements
 			session = getSession();
 
 			tx = session.beginTransaction();
-			session.update(solicitude);
+			session.delete(solicitude);
 			tx.commit();
 		} catch (HibernateException e) {
 			throw new IWDaoException(e);

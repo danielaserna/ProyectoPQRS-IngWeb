@@ -23,7 +23,7 @@ import co.edu.udea.iw.PQRS.exception.IWServiceException;
  * 
  * @author Yefry Alexis Calder&oacute;n Yepes
  * @author Daniela Serna Buitrago
- *
+ * 
  */
 public interface ISolicitudeService {
 
@@ -108,5 +108,15 @@ public interface ISolicitudeService {
 	 *             en la logica del negocio definida para esta clase
 	 */
 	public List<SolicitudeType> getAllSolicitudeType() throws IWDaoException,
+			IWServiceException;
+
+	/**
+	 * 
+	 * @param idSolicitude
+	 * @return
+	 * @throws IWDaoException
+	 * @throws IWServiceException
+	 */
+	public Solicitude get(Integer idSolicitude) throws IWDaoException,
 			IWServiceException;
 }
