@@ -1,0 +1,70 @@
+<br />
+<!-- <form name="solicitudeListForm" role="form"> -->
+<div ng-controller="requisitionResponseController" align="center">
+	<div align="right">
+		<button type="submit" ng-click="logout()" class="btn btn-default">
+			<span class="glyphicon glyphicon-circle-arrow-left"></span> Cerrar
+			Sesi&oacute;n
+		</button>
+	</div>
+	<h1>Respuesta a Solicitud</h1>
+	<table width="50%">
+		<tr>
+			<td>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Id</div>
+						<output class="form-control" type="text">{{s.idSolicitude}}</output>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Tipo de Solicitud</div>
+						<div>
+							<output type="text" class="form-control">{{s.solicitudeType.idSolicitudType}}</output>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Producto</div>
+						<output class="form-control" type="text">{{s.idProduct.type.type}}
+							- {{s.idProduct.description}}</output>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Sucursal</div>
+						<ouput class="form-control" type="number">{{s.idSucursal.nombre}}
+						- {{s.idSucursal.code.name}}</ouput>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Cliente</div>
+						<output class="form-control" type="email">{{s.idNumber.fullName}}
+							{{s.idNumber.lastName}}</output>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Descripci&oacute;n</div>
+						<textarea rows="4" cols="50" disabled="disabled">{{s.description}}</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">Respuesta</div>
+						<textarea rows="4" cols="50" ng-model="solicitudeResponse"></textarea>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div class="form-group">
+		<button type="submit" ng-click="evaluate()" class="btn btn-danger">
+			<span class="glyphicon glyphicon-pencil"></span> Responder Solicitud
+		</button>
+	</div>
+</div>
+<!-- </form> -->

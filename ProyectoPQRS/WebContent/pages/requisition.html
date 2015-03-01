@@ -1,0 +1,58 @@
+<br />
+<div ng-controller="requisitionController" align="center">
+	<div align="right">
+		<button type="submit" ng-click="logout()" class="btn btn-default">
+			<span class="glyphicon glyphicon-circle-arrow-left"></span> Cerrar
+			Sesi&oacute;n
+		</button>
+	</div>
+	<h1>Solicitud</h1>
+	<br />
+	<form name="requisitionForm" role="form">
+		<table width="50%">
+			<tr>
+				<td>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Sucursal</div>
+							<select ng-model="sucursal" required="required">
+								<option ng-repeat="s in sucursals" value="{{s.idSucursal}}">{{s.nombre}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Producto</div>
+							<select ng-model="product" required="required">
+								<option ng-repeat="p in products" value="{{p.idProduct}}">{{p.type.type}}
+									- {{p.description}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Tipo Solicitud</div>
+							<select ng-model="solicitudeType" required="required">
+								<option ng-repeat="st in solicitudeTypes"
+									value="{{st.idSolicitudType}}">{{st.idSolicitudType}}</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Descripci&oacute;n</div>
+							<div>
+								<textarea rows="4" cols="50" ng-model="solicitudeDescription"></textarea>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div class="form-group">
+			<button type="submit" ng-click="apply()" class="btn btn-danger">
+				<span class="glyphicon glyphicon-floppy-saved"></span> Enviar
+				Solicitud
+			</button>
+		</div>
+	</form>

@@ -1,0 +1,47 @@
+<div align="center">
+	<br />
+	<form>
+		<div align="right">
+			<button type="submit" ng-click="registerClient()"
+				class="btn btn-default">
+				<span class="glyphicon glyphicon-user"></span> Registrarse
+			</button>
+		</div>
+	</form>
+	<br /> <img src="./resources/images/welcome_logo.png" width="405px"
+		height="189px" /> <br /> <br />
+	<h1>Inicio de Sesi&oacute;n</h1>
+	<br />
+	<form name="loginForm" role="form">
+		<table width="50%">
+			<tr>
+				<td>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Usuario</div>
+							<input class="form-control"
+								placeholder="N&uacute;mero de Identificaci&oacute;n"
+								required="required" ng-model="userIdNumber" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Contrase&ntilde;a</div>
+							<div>
+								<input type="password" class="form-control"
+									placeholder="**********" required="required"
+									ng-model="password" />
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div class="form-group">
+			<button type="submit" ng-click="login()" class="btn btn-danger">
+				<span class="glyphicon glyphicon-log-in"></span> Iniciar
+				sesi&oacute;n
+			</button>
+		</div>
+	</form>
+</div>

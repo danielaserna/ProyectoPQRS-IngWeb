@@ -1,0 +1,53 @@
+<br />
+<div ng-controller="requisitionEvaluationController" align="center">
+	<form>
+		<div align="right">
+			<button type="submit" ng-click="logout()" class="btn btn-default">
+				<span class="glyphicon glyphicon-circle-arrow-left"></span> Cerrar
+				Sesi&oacute;n
+			</button>
+		</div>
+	</form>
+	<form name="solicitudeListForm" role="form">
+		<h1>Listado de Solicitudes</h1>
+		<div class="panel panel-danger">
+			<div class="panel-heading">Solicitudes Realizadas</div>
+			<div class="table-responsive">
+				<table align="center" class="table table-striped">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Descripci&oacute;n</th>
+							<th>Tipo de Solicitud</th>
+							<th>Producto</th>
+							<th>Sucursal</th>
+							<th>Cliente</th>
+							<th>Evaluar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="solicitude in solicitudes">
+							<td>{{solicitude.idSolicitude}}</td>
+							<td>{{solicitude.description}}</td>
+							<td>{{solicitude.solicitudeType.idSolicitudType}}</td>
+							<td>{{solicitude.idProduct.type.type}} -
+								{{solicitude.idProduct.description}}</td>
+							<td>{{solicitude.idSucursal.nombre}} -
+								{{solicitude.idSucursal.code.name}}</td>
+							<td>{{solicitude.idNumber.fullName}}
+								{{solicitude.idNumber.lastName}}</td>
+							<td><input type="radio" name="evaluation"
+								ng-model="$parent.selectedSolicitude" ng-value="{{solicitude}}" /></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="form-group">
+			<button type="submit" ng-click="evaluateSolitude()"
+				class="btn btn-danger">
+				<span class="glyphicon glyphicon-pencil"></span> Responder Solicitud
+			</button>
+		</div>
+</div>
+</form>
