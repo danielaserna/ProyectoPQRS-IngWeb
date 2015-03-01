@@ -4,11 +4,9 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.activation.MimeType;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -17,10 +15,10 @@ import javax.ws.rs.core.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.sun.org.apache.regexp.internal.recompile;
-
 import co.edu.udea.iw.PQRS.dto.Solicitude;
 import co.edu.udea.iw.PQRS.dto.SolicitudeType;
+import co.edu.udea.iw.PQRS.emailsender.EmailSender;
+import co.edu.udea.iw.PQRS.emailsender.exception.PQRSEmailException;
 import co.edu.udea.iw.PQRS.exception.IWDaoException;
 import co.edu.udea.iw.PQRS.exception.IWServiceException;
 import co.edu.udea.iw.PQRS.services.impl.SolicitudeService;
@@ -54,13 +52,11 @@ public class SolicitudeServiceWS {
 		try {
 			this.getSolicitudeService().insertSolicitude(description,
 					solicitudeType, idSucursal, idNumber, idProduct);
-		} catch (IWDaoException e) {
-			return e.getMessage();
-		}catch (IWServiceException e) {
-			return e.getMessage();
+		} catch (IWDaoException | IWServiceException e) {
+			return "ERROR";
 		}
-		
-		return "";
+
+		return "OK";
 	}
 
 	@GET
@@ -80,20 +76,44 @@ public class SolicitudeServiceWS {
 		return solicitudeList;
 	}
 
-	@Path("delete")
-	@PUT
+	@Path("solicituderesponse")
+	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	public String deleteSolicitude(
-			@QueryParam("idSolicitude") String idSolicitude)
-			throws IWDaoException, IWServiceException {
+	public String answerSolicitude(
+			@QueryParam("idSolicitude") String idSolicitude,
+			@QueryParam("response") String response) throws IWDaoException,
+			IWServiceException, PQRSEmailException {
+		EmailSender emailSender = null;
+		try {
+			emailSender = new EmailSender();
+		} catch (PQRSEmailException e1) {
+
+			return ("ERROR");
+		}
 
 		try {
+			Solicitude s = solicitudeService
+					.get(Integer.parseInt(idSolicitude));
+
+			if (s == null) {
+
+				return ("ERROR");
+			}
+
+			if (emailSender != null && response != null
+					&& !response.trim().equals("")) {
+
+				emailSender.sendEmail(s, response);
+			} else {
+				return ("ERROR");
+			}
+
 			solicitudeService.deleteSolicitude(idSolicitude);
-		} catch (IWDaoException e) {
+		} catch (Exception e) {
 			return e.getMessage();
 		}
 
-		return "";
+		return "OK";
 	}
 
 	@GET

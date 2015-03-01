@@ -54,13 +54,11 @@ public class ServiceClientWS {
 		try {
 			clientService.saveClient(fullName, lastName, cellPhoneNumber,
 					email, idNumber, phoneNumber, profile);
-		} catch (IWDaoException e) {
-			return e.getMessage();
-		} catch (IWServiceException e) {
-			return e.getMessage();
+		} catch (IWDaoException | IWServiceException e) {
+			return "Error";
 		}
 
-		return "";
+		return "OK";
 	}
 
 }
