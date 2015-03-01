@@ -88,7 +88,7 @@ public interface ClientDAO {
 	 * @param idNumber
 	 *            N&uacute;mero de identificaci&oacute;n del cliente que se
 	 *            desea recuperar
-	 * @return instancia de la clase {@code Client} existente en la base de
+	 * @return instancia de la clase {@code Solicitude} existente en la base de
 	 *         datos
 	 * @throws IWDaoException
 	 *             Excepci&oacute;n lanzada cuando alg&uacute;n error ha surgido

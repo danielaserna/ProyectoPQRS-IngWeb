@@ -29,7 +29,8 @@ import co.edu.udea.iw.PQRS.services.impl.SucursalService;
  * 
  * @version 1.0
  * 
- * @author Alexis-PC
+ * @author Daniela Serna Buitrago
+ * @author Yefry Alexis Calderon Yepes
  *
  */
 @Path("Sucursal")

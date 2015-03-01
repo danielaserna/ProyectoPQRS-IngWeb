@@ -16,20 +16,94 @@ import javax.mail.internet.MimeMessage;
 import co.edu.udea.iw.PQRS.dto.Solicitude;
 import co.edu.udea.iw.PQRS.emailsender.exception.PQRSEmailException;
 
+/**
+ * Clase que define la implementaci&oacute;n de m&eacute;todos que sirven para
+ * para gestionar la configuración de una cuenta de correo electr&oacute;nico y
+ * el env&iacute;o de los mismos a partir de los datos proporciondos por un
+ * objeto tipo {@code Solicitude}.
+ * <p>
+ * Esta clase ser&aacute; la encargada de apoyar el proceso de env&iacute;o de
+ * correos electr&oacute;nicos cada vez que una solicitud es atendida por uno de
+ * los Administradores del sistema.
+ *
+ * @since JDK1.8
+ *
+ * @version 1.0
+ *
+ * @author Daniela Serna Buitrago
+ * @author Yefry Alexis Calderon Yepes
+ */
 public final class EmailSender {
 
+	/**
+     * Atributo a trav&eacute;s del cual se gestiona y guarda la
+     * informaci&oacute;n que se encuentra en una archivo de propiedades,
+     * espec&iacute;ficamente, los datos relacionados con la
+     * configuraci&oacute;n de correo electr&oacute;nico fuente.
+     */
 	private Properties properties;
+	
+	/**
+     * Atributo en el que se conserva el correo electr&oacute;nico desde el cual
+     * se realizar&aacute; el env&iacute;o de los mensajes.
+     */
 	private String fromEmail;
+	
+	/**
+     * Atributo donde se almacena temporalmente la contrase&ntilde;a asociada a
+     * la cuenta de correo electr&oacute;nico fuente.
+     */
 	private String password;
+	
+	/**
+     * Atributo que representa el protocolo o host a trav&eacute;s del cual se
+     * realizar&aacute;n los env&iacute;os de los mensajes.
+     */
 	private String host;
+	
+	/**
+     * Atributo que almacena temporalmente el puerto usado para enviar los
+     * mensajes.
+     */
 	private String port;
+	
+	/**
+     * Objeto tipo {@code Session} en el que se guarda todas las propiedades y
+     * valores por defecto usados para el env&iacute;o de los mensajes.
+     */
 	private Session session;
 
+	/**
+     * &Uacute;nico constructor de la clase y en el que se podr&aacute; obtener
+     * el conjunto de propiedades que permite el env&iacute;o correcto de los
+     * mensajes..
+     *
+     * @throws PQRSEmailException
+     */
 	public EmailSender() throws PQRSEmailException {
 		this.properties = new Properties();
 		this.configureEMailProperties();
 	}
 
+	/**
+     * M&eacute;todo que sirve para el env&io de correos electr&oacute;nicos
+     * desde un correo fuente previamente obtenido desde las propiedades.
+     * Ser&aacute; el &uacute;nico m&eacute;todo que realice este procedimiento
+     * y es utilzado para dar apoyo al proceso de responder ante una solicitud
+     * realizada por un clinte y/o usuario.
+     *
+     * @param solicitude Objetio de tipo {@code Solicitude} usado para obtener
+     * la informaci&oacute;n necesaria y/o requerida para el env&iacute;o del
+     * mensaje. Representa la petici&oacute;n a la que se le desaa dar respuesta
+     * o se desea atender.
+     * @param text Hilera de caracteres que representa la respuesta dada por una
+     * administrador a la petici&oacute;n evaluada.
+     * @return Retorna <b>true</b> si el proceso se haya realizado
+     * correctamente.
+     * @throws PQRSEmailException Excepción lanzada debido a alg&uacute;n
+     * problema o error ocurrido mientras se trataba de realizar el env&iacute;o
+     * de un correo electr&oacute;nico.
+     */
 	public boolean sendEmail(Solicitude solicitude, String text)
 			throws PQRSEmailException {
 		if (solicitude == null) {
@@ -101,6 +175,17 @@ public final class EmailSender {
 		return (true);
 	}
 
+	/**
+     * M&eacute;todo cuyo prop&oacute;sito es la obtenci&oacute;n de las
+     * propiedades o de los datos que servir&aacute;n como insumo para realizar
+     * la configuraci&ooacute;n del correo electr&oacute;nico desde el cual se
+     * realizar&aacute; el env&iacute;o de los mensajes. Es principalmente un
+     * m&eacute;todo de utilidad.
+     *
+     * @throws PQRSEmailException Excepci&oacute;n lanzada cuando no se ha
+     * encontrado el archivo de propiedades, no se ha podido abrir o no se ha
+     * podido leer las propiedades que almacena.
+     */
 	private void getEMailAccountProperties() throws PQRSEmailException {
 		Properties properties = new Properties();
 		InputStream inputStream = getClass().getResourceAsStream(
@@ -122,6 +207,17 @@ public final class EmailSender {
 		this.port = properties.getProperty("PORT");
 	}
 
+	/**
+     * M&eacute;todo donde se establecen el conjunto de propiedades que
+     * permitir&aacute;n la conexi&oacute;n a la cuenta de correo
+     * electr&oacute;nico para el env&iacute;o de los mensajes a trav&eacute;s
+     * de la misma.
+     *
+     * @param host Atributo que representa el host o protocolo utilizado para el
+     * env&iacute;o de los mensajes.
+     * @param port Puerto a trav&eacute;s del cual se hace la conexi&oacute;n a
+     * la cuenta de correo y se hace el env&iacute;o de los mensajes.
+     */
 	private void getSessionProperties(String host, String port) {
 		this.properties.put("mail.smtp.host", host);
 		this.properties.put("mail.smtp.socketFactory.port", port);
@@ -131,6 +227,15 @@ public final class EmailSender {
 		this.properties.put("mail.smtp.port", port);
 	}
 
+	/**
+     * Es en este m&eacute;todo donde se obtiene la sesi&oacute;n de correo para
+     * realizar el uso inmediato de la cuenta all&iacute; asociada o
+     * establecida.
+     *
+     * @throws PQRSEmailException Excepci&oacute;n lanzada porque no se ha
+     * podido crear la sesi&oacute;n debido a alguna inconsistencia en los datos
+     * obtendios.
+     */
 	private void configureEMailProperties() throws PQRSEmailException {
 		this.getEMailAccountProperties();
 		this.getSessionProperties(this.host, this.port);

@@ -111,11 +111,17 @@ public interface ISolicitudeService {
 			IWServiceException;
 
 	/**
-	 * 
+	 * M&eacute;todo encargado de realizar la consulta para obtener una 
+	 * instancia de tipo {@code Solicitude} que se encuentra en la base de
+	 * datos 
 	 * @param idSolicitude
-	 * @return
+	 * @return Objeto de tipo {@code Solicitud} con su respectiva informaci&oacute;n
 	 * @throws IWDaoException
+	 *             Excepci&oacute;n lanzada cuando alg&uacute;n error ha surgido
+	 *             en la recuperaci&oacute;n de los datos
 	 * @throws IWServiceException
+	 *             Excepci&oacute;n lanzada cuando alg&uacute;n error ha surgido
+	 *             en la logica del negocio definida para esta clase
 	 */
 	public Solicitude get(Integer idSolicitude) throws IWDaoException,
 			IWServiceException;

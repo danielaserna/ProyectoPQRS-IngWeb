@@ -229,6 +229,12 @@ public class SolicitudeService implements ISolicitudeService {
 		return solicitudeTypeList;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * co.edu.udea.iw.PQRS.services.ISolicitudeService#get(java.lang.Integer)
+	 */
 	@Override
 	public Solicitude get(Integer idSolicitude) throws IWDaoException,
 			IWServiceException {

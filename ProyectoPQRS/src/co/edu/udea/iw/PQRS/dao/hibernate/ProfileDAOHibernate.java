@@ -27,7 +27,8 @@ import co.edu.udea.iw.PQRS.exception.IWDaoException;
  * 
  * @version 1.0
  * 
- * @author Alexis-PC
+ * @author Daniela Serna Buitrago
+ * @author Yefry Alexis Calderon Yepes
  *
  */
 

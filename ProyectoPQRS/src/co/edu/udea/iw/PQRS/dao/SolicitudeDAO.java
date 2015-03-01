@@ -6,25 +6,91 @@ import co.edu.udea.iw.PQRS.dto.Solicitude;
 import co.edu.udea.iw.PQRS.exception.IWDaoException;
 
 /**
+ * Interfaz definida para establecer los m&eacute;todos que se podr&aacute;n
+ * realizar sobre los datos en las instancias pertenecientes a la clase
+ * {@code Solicitude}, sobre el contexto de persistencia definido para el
+ * aplicativo.
+ * <p>
+ * Esta interfaz define los m&eacute;todos o funciones que se deber&aacute;n
+ * implementar para dar soporte a las operaciones requeridas por la
+ * l&oacute;gica del negocio sobre las entidades o instancias persistences de la
+ * clase {@code Solicitude}.
  * 
+ * @since JDK 1.8
+ * 
+ * @version 1.0
  * @author Daniela Serna Buitrago
  * @author Yefry Alexis Calderon Yepes
  * 
  */
 public interface SolicitudeDAO {
 
-	// Inserta una solicitud en la base de datos
+	/**
+	 * M&eacute;todo que realiza la consulta correspondiente a insertar un
+	 * objeto de tipo {@code Solicitude} en la base de datos
+	 * @param solicitude
+	 * 			  objeto tipo {@code Solicitude} con toda la informaci&acute:n
+	 *            correspondiente a ser almacenada
+	 * @return instancia tipo {@code Solicitude}
+	 * @throws IWDaoException
+	 * 			   Excepci&oacute;n lanzada cuando alg&uacute;n error ha surgido
+	 *             en la recuperaci&oacute;n de los datos
+	 */
 	public Solicitude insert(Solicitude solicitude) throws IWDaoException;
 
-	// Actualiza una solicitud en la base de datos
+	/**
+	 * M&eacute;todo encargado de actualizar los datos correspondientes a un
+	 * objeto tipo {@code Solicitude} en la base de datos
+	 * 
+	 * @param solicitude
+	 * 			  objeto tipo {@code Solicitude} con toda la informaci&acute:n
+	 *            correspondiente a ser almacenada
+	 * @return instancia tipo {@code Solicitude}
+	 * @throws IWDaoException
+	 * 			   Excepci&oacute;n lanzada cuando alg&uacute;n error ha surgido
+	 *             en la recuperaci&oacute;n de los datos
+	 */
 	public Solicitude update(Solicitude solicitude) throws IWDaoException;
 
-	// Elimina una solicitud de la base de datos
+	/**
+	 * M&eacute;todo encargado de ejecutar la sentencia para eliminar un objeto 
+	 * de tipo {@code Solicitud} de la base de datos
+	 * 
+	 * @param solicitude
+	 * 			  objeto tipo {@code Solicitude} con toda la informaci&acute:n
+	 *            correspondiente a ser almacenada
+	 * @return instancia tipo {@code Solicitude}
+	 * @throws IWDaoException
+	 * 			   Excepci&oacute;n lanzada cuando alg&uacute;n error ha surgido
+	 *             en la recuperaci&oacute;n de los datos
+	 */
 	public Solicitude delete(Solicitude solicitude) throws IWDaoException;
 
-	// Entrega la lista de solicitudes existentes en la base de datos
+	/**
+	 * M&eacute;todo que sirve para ejecutar una consulta que retorne todos los
+	 * objetos de tipo {@code Solicitude} existentes en la base de datos
+	 * 
+	 * @return lista de objetos de tipo {@code Solicitude} con su respectiva
+	 *         informaci&oacute;n
+	 * @throws IWDaoException
+	 *             Excepci&oacute;n lanzada cuando alg&uacute;n error ha surgido
+	 *             en la recuperaci&oacute;n de los datos
+	 */
 	public List<Solicitude> get() throws IWDaoException;
 
-	// Entrega los datos de una solicitud dado su identificador
+	/**
+	  M&eacute;todo que sirve para realizar una consulta y recuperar de la base
+	 * de datos un objeto de tipo {@code Solicitude}, b&uacute;squeda que se realiza
+	 * por el n&uacute;mero de identificaci&oacute;n de la solicitud
+	 * 
+	 * @param idSolicitude
+	 *            N&uacute;mero de identificaci&oacute;n de la solicitud que se
+	 *            desea recuperar
+	 * @return instancia de la clase {@code Solicitude} existente en la base de
+	 *         datos
+	 * @throws IWDaoException
+	 *             Excepci&oacute;n lanzada cuando alg&uacute;n error ha surgido
+	 *             en la recuperaci&oacute;n de los datos
+	 */
 	public Solicitude get(Integer idSolicitude) throws IWDaoException;
 }
