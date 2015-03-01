@@ -4,6 +4,8 @@ import java.util.List;
 
 import co.edu.udea.iw.PQRS.dao.SolicitudeDAO;
 import co.edu.udea.iw.PQRS.dao.SolicitudeTypeDAO;
+import co.edu.udea.iw.PQRS.dao.hibernate.SolicitudeDAOHibernate;
+import co.edu.udea.iw.PQRS.dao.hibernate.SolicitudeTypeDAOHibernate;
 import co.edu.udea.iw.PQRS.dto.Client;
 import co.edu.udea.iw.PQRS.dto.Product;
 import co.edu.udea.iw.PQRS.dto.Solicitude;
@@ -13,28 +15,106 @@ import co.edu.udea.iw.PQRS.exception.IWDaoException;
 import co.edu.udea.iw.PQRS.exception.IWServiceException;
 import co.edu.udea.iw.PQRS.services.ISolicitudeService;
 
+/**
+ * Clase que define la implementaci&oacute;n espec&iacute;fica para los
+ * m&eacute;todos que sirven de apoyo para efectuar los procesos definidos en la
+ * capa de negocio con respecto a la gesti&oacute;n de la entidad
+ * {@code Solicitude}
+ * 
+ * <p>
+ * Los m&eacute;todos expuestos para la gesti&oacute;n de los procesos de
+ * negocio con respecto a las entidades perteneceientes a la clase
+ * {@code Client} son aquellos que fueron definidos en la interfaz
+ * {@code ISolicitudeService}
+ * 
+ * @since JDK 1.8
+ * 
+ * @version 1.0
+ * 
+ * @author Yefry Alexis Calderon Yepes
+ * @author Daniela Serna Buitrago
+ */
 public class SolicitudeService implements ISolicitudeService {
 
+	/**
+	 * Instancia requerida para poder realizar la gesti&oacute;n de los datos de
+	 * las instancias {@code Solicitude} con respecto a la capa que define el
+	 * contexto de persistencia de la aplicaci&oacute;n
+	 */
 	private SolicitudeDAO solicitudeDAOHibernate;
+	/**
+	 * Instancia requerida para poder realizar la gesti&oacute;n de los datos de
+	 * las instancias {@code SolicitudeType} con respecto a la capa que define
+	 * el contexto de persistencia de la aplicaci&oacute;n
+	 */
 	private SolicitudeTypeDAO solicitudeTypeDAOHibernate;
 
+	/**
+	 * M&eacute;todo para obtener la instancia que sirve para realizar la
+	 * gesti&oacute;n de los datos con respecto a la capa que define el contexto
+	 * de persistencia en la aplicaci&oacute;n para la entidad
+	 * {@code SolicitudeDAO}.
+	 * 
+	 * @return Instancia de tipo {@code SolicitudeDAO} para acceder a los datos
+	 *         de la capa de persistencia
+	 * @return
+	 */
 	public SolicitudeDAO getSolicitudeDAOHibernate() {
 		return solicitudeDAOHibernate;
 	}
 
+	/**
+	 * M&eacute;todo para establecer una instancia que servir&aacute; para
+	 * realizar la gesti&oacute;n de los datos con respecto a la capa que define
+	 * el contexto de persistencia en la aplicaci&oacute;n para la entidad
+	 * {@code SolicitudeDAOHibernate}.
+	 * 
+	 * @param solicitudeDAOHibernate
+	 *            instacia de tipo {@code SolicitudeDAOHibernate} que servira
+	 *            para el acceso a loa datos de persistencia
+	 */
 	public void setSolicitudeDAOHibernate(SolicitudeDAO solicitudeDAOHibernate) {
 		this.solicitudeDAOHibernate = solicitudeDAOHibernate;
 	}
 
+	/**
+	 * M&eacute;todo para obtener la instancia que sirve para realizar la
+	 * gesti&oacute;n de los datos con respecto a la capa que define el contexto
+	 * de persistencia en la aplicaci&oacute;n para la entidad
+	 * {@code SolicitudeTypeDAOHibernate}.
+	 * 
+	 * @return Instancia de tipo {@code SolicitudeTypeDAO} para acceder a los
+	 *         datos de la capa de persistencia
+	 * @return
+	 */
 	public SolicitudeTypeDAO getSolicitudeTypeDAOHibernate() {
 		return solicitudeTypeDAOHibernate;
 	}
 
+	/**
+	 * M&eacute;todo para establecer una instancia que servir&aacute; para
+	 * realizar la gesti&oacute;n de los datos con respecto a la capa que define
+	 * el contexto de persistencia en la aplicaci&oacute;n para la entidad
+	 * {@code SolicitudeTypeDAOHibernate}.
+	 * 
+	 * @param solicitudeTypeDAOHibernate
+	 *            instacia de tipo {@code SolicitudeTypeDAOHibernate} que
+	 *            servira para el acceso a loa datos de persistencia
+	 */
 	public void setSolicitudeTypeDAOHibernate(
 			SolicitudeTypeDAO solicitudeTypeDAOHibernate) {
 		this.solicitudeTypeDAOHibernate = solicitudeTypeDAOHibernate;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * co.edu.udea.iw.PQRS.services.ISolicitudeService#insertSolicitude(java
+	 * .lang.String, java.lang.String, java.lang.String, java.lang.String,
+	 * java.lang.String)
+	 */
+	@Override
 	public void insertSolicitude(String description, String solicitudeType,
 			String idSucursal, String idNumber, String idProduct)
 			throws IWDaoException, IWServiceException {
@@ -77,20 +157,33 @@ public class SolicitudeService implements ISolicitudeService {
 		solicitudeDAOHibernate.insert(solicitude);
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see co.edu.udea.iw.PQRS.services.ISolicitudeService#getAll()
+	 */
 	@Override
 	public List<Solicitude> getAll() throws IWDaoException, IWServiceException {
 
 		List<Solicitude> solicitudeList = null;
 
 		solicitudeList = solicitudeDAOHibernate.get();
-		
+
 		if (solicitudeList == null || solicitudeList.size() == 0) {
-			throw new IWServiceException("No existen solicitudes en la base datos");
+			throw new IWServiceException(
+					"No existen solicitudes en la base datos");
 		}
 
 		return solicitudeList;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * co.edu.udea.iw.PQRS.services.ISolicitudeService#deleteSolicitude(java
+	 * .lang.String)
+	 */
 	@Override
 	public void deleteSolicitude(String idSolicitude) throws IWDaoException,
 			IWServiceException {
@@ -116,6 +209,12 @@ public class SolicitudeService implements ISolicitudeService {
 		}
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * co.edu.udea.iw.PQRS.services.ISolicitudeService#getAllSolicitudeType()
+	 */
 	@Override
 	public List<SolicitudeType> getAllSolicitudeType() throws IWDaoException,
 			IWServiceException {

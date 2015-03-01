@@ -14,9 +14,31 @@ import co.edu.udea.iw.PQRS.dao.ClientDAO;
 import co.edu.udea.iw.PQRS.dto.Client;
 import co.edu.udea.iw.PQRS.exception.IWDaoException;
 
+/**
+ * Clase que define la implementaci&oacute;n espec&iacute;fica para los
+ * m&eacute;todos de acceso al repositorio de datos y definidos en la interfaz
+ * {@code ClientDAO}; por otra parte, esta clase hereda indirectamente de clase
+ * definida en el framework <b>Spring MVC</b> llamada:
+ * <code>HibernateDaoSupport</code>, dando de ese modo un soporte directo para
+ * el acceso y gesti&oacute;n de los datos en el contexto de persistencia
+ * definido en la aplicaci&oacute;n.
+ * 
+ * @since JDK 1.8
+ * 
+ * @version 1.0
+ * 
+ * @author Alexis-PC
+ *
+ */
 public class ClientDAOHibernate extends HibernateDaoSupport implements
 		ClientDAO {
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * co.edu.udea.iw.PQRS.dao.ClientDAO#insert(co.edu.udea.iw.PQRS.dto.Client)
+	 */
+	@Override
 	public Client insert(Client client) throws IWDaoException {
 
 		Transaction tx = null;
@@ -37,7 +59,12 @@ public class ClientDAOHibernate extends HibernateDaoSupport implements
 
 		return client;
 	}
-
+	
+	/*
+	 * (non-Javadoc)
+	 * @see co.edu.udea.iw.PQRS.dao.ClientDAO#update(co.edu.udea.iw.PQRS.dto.Client)
+	 */
+	@Override
 	public Client update(Client client) throws IWDaoException {
 
 		Transaction tx = null;
@@ -59,6 +86,11 @@ public class ClientDAOHibernate extends HibernateDaoSupport implements
 		return client;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see co.edu.udea.iw.PQRS.dao.ClientDAO#delete(co.edu.udea.iw.PQRS.dto.Client)
+	 */
+	@Override
 	public Client delete(Client client) throws IWDaoException {
 
 		Transaction tx = null;
@@ -80,6 +112,11 @@ public class ClientDAOHibernate extends HibernateDaoSupport implements
 		return null;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see co.edu.udea.iw.PQRS.dao.ClientDAO#get()
+	 */
+	@Override
 	public List<Client> get() throws IWDaoException {
 
 		Session session = null;
@@ -102,6 +139,11 @@ public class ClientDAOHibernate extends HibernateDaoSupport implements
 		return clients;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see co.edu.udea.iw.PQRS.dao.ClientDAO#get(java.lang.Integer)
+	 */
+	@Override
 	public Client get(Integer idNumber) throws IWDaoException {
 
 		Client client = null;

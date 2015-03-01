@@ -3,28 +3,40 @@ package co.edu.udea.iw.PQRS.dto;
 import java.io.Serializable;
 
 /**
- * Clase dto para los datos de las ciudades
+ * Clase dto para los datos de las ciudades (Data Tranfer Object).
+ * Esta clase ser&acute; usada para realizar toda la persistencia relacionada
+ * con la entidad {@code City}}
  * 
+ * @since JDK 1.8
+ * 
+ * @version 1.0
+ *  
  * @author Daniela Serna Buitrago
  * @author Yefry Alexis Calderon Yepes
- * 
+ *
  */
 public class City implements Serializable {
 
+	/**
+	 * Constante utilizada para realizar operaciones de serializaci&oacute;n de la
+	 * instancia {@code City} e igualmente de todos los atributos tanto primitivos
+	 * como objetos y compuestos que esta instancia agrupe
+	 */
 	private static final long serialVersionUID = 6217642515784020664L;
 
 	/**
-	 * Codigo de la ciudad
+	 * Atributo que representa el Codigo que posee cada ciudad dentro de la base de 
+	 * datos
 	 */
 	private Integer code;
 
 	/**
-	 * Nombre de la ciudad
+	 * Atributo que representa el Nombre de la ciudad
 	 */
 	private String name;
 
 	/**
-	 * Codigo de area de la ciudad
+	 * Atributo que representa el Codigo de &acute;rea de la ciudad
 	 */
 	private String areaCode;
 

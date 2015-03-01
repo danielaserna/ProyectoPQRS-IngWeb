@@ -13,10 +13,33 @@ import co.edu.udea.iw.PQRS.dao.SucursalDAO;
 import co.edu.udea.iw.PQRS.dto.Sucursal;
 import co.edu.udea.iw.PQRS.exception.IWDaoException;
 
-public class SucursalDAOHibernate extends HibernateDaoSupport implements SucursalDAO {
+/**
+ * Clase que define la implementaci&oacute;n espec&iacute;fica para los
+ * m&eacute;todos de acceso al repositorio de datos y definidos en la interfaz
+ * {@code SucursalDAO}; por otra parte, esta clase hereda indirectamente de
+ * clase definida en el framework <b>Spring MVC</b> llamada:
+ * <code>HibernateDaoSupport</code>, dando de ese modo un soporte directo para
+ * el acceso y gesti&oacute;n de los datos en el contexto de persistencia
+ * definido en la aplicaci&oacute;n.
+ * 
+ * @since JDK 1.8
+ * 
+ * @version 1.0
+ * 
+ * @author Alexis-PC
+ *
+ */
+public class SucursalDAOHibernate extends HibernateDaoSupport implements
+		SucursalDAO {
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see co.edu.udea.iw.PQRS.dao.SucursalDAO#get()
+	 */
+	@Override
 	public List<Sucursal> get() throws IWDaoException {
-		
+
 		List<Sucursal> sucursal = new ArrayList<Sucursal>();
 
 		try {
@@ -31,11 +54,17 @@ public class SucursalDAOHibernate extends HibernateDaoSupport implements Sucursa
 		}
 
 		return sucursal;
-		
+
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see co.edu.udea.iw.PQRS.dao.SucursalDAO#obtener(java.lang.Integer)
+	 */
+	@Override
 	public Sucursal obtener(Integer idSucursal) throws IWDaoException {
-		
+
 		Sucursal sucursal = null;
 
 		try {

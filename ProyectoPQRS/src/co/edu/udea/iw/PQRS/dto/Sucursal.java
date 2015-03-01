@@ -5,7 +5,14 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Clase dto para los datos de las sucursales
+ * Clase DTO (Data Tranfer Object) para manejar los datos de las sucursales que 
+ * existen dentro de la aplicaci&oacute;n
+ * Esta clase ser&acute; usada para realizar toda la persistencia relacionada
+ * con la entidad {@code Sucursal}
+ * 
+ * @since JDK 1.8
+ * 
+ * @version 1.0
  * 
  * @author Daniela Serna Buitrago
  * @author Yefry Alexis Calderon Yepes
@@ -14,10 +21,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement()
 public class Sucursal implements Serializable {
 
+	/**
+	 * Constante utilizada para realizar operaciones de serializaci&oacute;n de la
+	 * instancia {@code Sucursal} e igualmente de todos los atributos tanto primitivos
+	 * como objetos y compuestos que esta instancia agrupe
+	 */
 	private static final long serialVersionUID = 3126750689288922532L;
 
 	/**
-	 * Identificador de la sucursal
+	 *Atributo que identifica una sucursal dentro del sistema
 	 */
 	private Integer idSucursal;
 

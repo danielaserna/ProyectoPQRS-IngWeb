@@ -14,8 +14,30 @@ import co.edu.udea.iw.PQRS.dto.City;
 import co.edu.udea.iw.PQRS.dto.Profile;
 import co.edu.udea.iw.PQRS.exception.IWDaoException;
 
+/**
+ * Clase que define la implementaci&oacute;n espec&iacute;fica para los
+ * m&eacute;todos de acceso al repositorio de datos y definidos en la interfaz
+ * {@code ProfileDAO}; por otra parte, esta clase hereda indirectamente de clase
+ * definida en el framework <b>Spring MVC</b> llamada:
+ * <code>HibernateDaoSupport</code>, dando de ese modo un soporte directo para
+ * el acceso y gesti&oacute;n de los datos en el contexto de persistencia
+ * definido en la aplicaci&oacute;n.
+ * 
+ * @since JDK 1.8
+ * 
+ * @version 1.0
+ * 
+ * @author Alexis-PC
+ *
+ */
+
 public class ProfileDAOHibernate extends HibernateDaoSupport implements ProfileDAO {
 
+	/*
+	 * (non-Javadoc)
+	 * @see co.edu.udea.iw.PQRS.dao.ProfileDAO#get()
+	 */
+	@Override
 	public List<Profile> get() throws IWDaoException {
 
 			List<Profile> profile = new ArrayList<Profile>();
@@ -34,6 +56,11 @@ public class ProfileDAOHibernate extends HibernateDaoSupport implements ProfileD
 			return profile;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see co.edu.udea.iw.PQRS.dao.ProfileDAO#obtener(java.lang.String)
+	 */
+	@Override
 	public Profile obtener(String profile) throws IWDaoException {
 		
 		Profile profiles = null;

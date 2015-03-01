@@ -5,7 +5,14 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Clase dto para los datos de las solicitudes
+ * Clase DTO (Data Tranfer Object) para manejar los datos de las solicitudes que 
+ * se generar&acute;n dentro de la aplicaci&oacute;n
+ * Esta clase ser&acute; usada para realizar toda la persistencia relacionada
+ * con la entidad {@code Solicitude}
+ * 
+ * @since JDK 1.8
+ * 
+ * @version 1.0
  * 
  * @author Daniela Serna Buitrago
  * @author Yefry Alexis Calderon Yepes
@@ -13,25 +20,31 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement()
 public class Solicitude implements Serializable {
 
+	/**
+	 * Constante utilizada para realizar operaciones de serializaci&oacute;n de la
+	 * instancia {@code Solicitude} e igualmente de todos los atributos tanto primitivos
+	 * como objetos y compuestos que esta instancia agrupe
+	 */
 	private static final long serialVersionUID = -7442993749471623615L;
 
 	/**
-	 * Identificador de la solicitud
+	 *Atributo que representa la identificación de la solicitud, el cual es un 
+	 *número autogenerado
 	 */
 	private Integer idSolicitude;
 
 	/**
-	 * Descripcion de la solicitud
+	 * Atributo que representa la Descripcion de la solicitud que realiza un cliente
 	 */
 	private String description;
 
 	/**
-	 * Tipo de solicitud
+	 * Atributo que representa el Tipo de solicitud que desea realizar el cliente
 	 */
 	private SolicitudeType solicitudeType;
 
 	/**
-	 * Identificador del producto de la solicitud
+	 * Identificador del producto sobre el cual se esta realizando la solicitud
 	 */
 	private Product idProduct;
 

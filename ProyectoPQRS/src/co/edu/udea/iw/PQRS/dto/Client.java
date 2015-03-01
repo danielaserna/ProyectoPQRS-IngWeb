@@ -5,7 +5,13 @@ import java.io.Serializable;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Clase dto para los datos del cliente
+ * Clase dto(Data Tranfer Object) para los datos de un Cliente .
+ * Esta clase ser&acute; usada para realizar toda la persistencia relacionada
+ * con la entidad {@code Client}}
+ * 
+ * @since JDK 1.7
+ * 
+ * @version 1.0
  * 
  * @author Daniela Serna Buitrago
  * @author Yefry Alexis Calderon Yepes
@@ -14,25 +20,32 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement()
 public class Client implements Serializable {
 
+	/**
+	 * Constante utilizada para realizar operaciones de serializaci&oacute;n de la
+	 * instancia {@code Client} e igualmente de todos los atributos tanto primitivos
+	 * como objetos y compuestos que esta instancia agrupe
+	 */
 	private static final long serialVersionUID = 4098723666223954696L;
 
 	/**
-	 * Identificación del cliente
+	 *Atributo que representa la Identificación del cliente, la cual es inequivoca
+	 *para cada usuario, y ser&acute; usada para el registro y validaci&oacute;n 
+	 *del usuario dentro del sistema
 	 */
 	private Integer idNumber;
 
 	/**
-	 * Nombre del Cliente
+	 * Atributo que representa el Nombre del Cliente
 	 */
 	private String fullName;
 
 	/**
-	 * Apellidos del Cliente
+	 *Atributo que representa los Apellidos del Cliente 
 	 */
 	private String lastName;
 
 	/**
-	 * Correo electronico del Cliente
+	 * Atributo que Correo electronico del Cliente
 	 */
 	private String email;
 

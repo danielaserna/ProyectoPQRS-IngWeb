@@ -13,8 +13,30 @@ import co.edu.udea.iw.PQRS.dao.ProductTypeDAO;
 import co.edu.udea.iw.PQRS.dto.ProductType;
 import co.edu.udea.iw.PQRS.exception.IWDaoException;
 
+/**
+ * Clase que define la implementaci&oacute;n espec&iacute;fica para los
+ * m&eacute;todos de acceso al repositorio de datos y definidos en la interfaz
+ * {@code ProductTypeDAO}; por otra parte, esta clase hereda indirectamente de clase
+ * definida en el framework <b>Spring MVC</b> llamada:
+ * <code>HibernateDaoSupport</code>, dando de ese modo un soporte directo para
+ * el acceso y gesti&oacute;n de los datos en el contexto de persistencia
+ * definido en la aplicaci&oacute;n.
+ * 
+ * @since JDK 1.8
+ * 
+ * @version 1.0
+ * 
+ * @author Alexis-PC
+ *
+ */
+
 public class ProductTypeDAOHibernate extends HibernateDaoSupport implements ProductTypeDAO {
 
+	/*
+	 * (non-Javadoc)
+	 * @see co.edu.udea.iw.PQRS.dao.ProductTypeDAO#get()
+	 */
+	@Override
 	public List<ProductType> get() throws IWDaoException {
 		
 		
@@ -34,6 +56,11 @@ public class ProductTypeDAOHibernate extends HibernateDaoSupport implements Prod
 			return productType;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see co.edu.udea.iw.PQRS.dao.ProductTypeDAO#obtener(java.lang.String)
+	 */
+	@Override
 	public ProductType obtener(String type) throws IWDaoException {
 		
 		ProductType productType = null;
